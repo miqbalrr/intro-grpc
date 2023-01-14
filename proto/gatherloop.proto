@@ -1,0 +1,37 @@
+syntax = "proto3";
+package gatherloop;
+
+option go_package = "pb/;gatherloop";
+
+service GatherloopService {
+    rpc BuatSeminar(BuatSeminarRequest) returns (ServiceResponse);
+    rpc GetSeminar(GetSeminarRequest) returns (GetSeminarResponse);
+}
+
+message ServiceResponse {
+    string status = 1;
+}
+
+message BuatSeminarRequest {
+    string pembicara = 1;
+    string acara = 2;
+    string waktu = 3;
+    string lokasi = 4;
+    bool berbayar = 5;
+}
+
+message GetSeminarRequest {
+    string lokasi = 1;
+}
+
+message Seminar {
+    string pembicara = 1;
+    string acara = 2;
+    string waktu = 3;
+    string lokasi = 4;
+    bool berbayar = 5;
+}
+
+message GetSeminarResponse {
+  repeated Seminar seminars = 1;
+}
